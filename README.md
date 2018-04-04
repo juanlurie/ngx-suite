@@ -105,7 +105,7 @@ export class HelloWorldComponent {
 }
 ```
 
-###Validation
+### Validation
 At runtime field names are validated to ensure only one key is added to the collection. 
 
 One of these exceptions can be thrown
@@ -116,9 +116,9 @@ FieldWithKeyDoesNotExistException
 MultipleFieldsWithSameKeyExistException 
 ```
 
-###More Methods 
+### More Methods 
 
-####Containers : 
+#### Containers : 
 
 ```ts
 
@@ -128,7 +128,7 @@ form.addModalContainer(header: string, options: FieldOptions = {})
 
 ```
 
-####Fields:
+#### Fields:
 ```ts
 container.addInputField(label: string, options: FieldOptions = {})
 container.addAutocompleteField(label: string, options: Array<KeyValue>)
@@ -144,7 +144,7 @@ container.addTableField<T>(key: string)
 
 ```
 
-####Floating Action Buttons (FABS):
+#### Floating Action Buttons (FABS):
 
 ```ts
 this.form = this.easyFormService.createForm();
@@ -152,7 +152,7 @@ this.form.addAction("Save", () => this.save(), { icon: Icons.icon_done, color: C
 this.form.addAction("Back", () => this.back(), { icon: Icons.icon_arrow_back, color: Colors.color_warn });
 ```
 
-####Modal:
+#### Modal:
 
 ```ts
 
@@ -165,7 +165,7 @@ this.easyModal.showModal(modal);
 
 ```
 
-####FieldOptions:
+#### FieldOptions:
 ```ts
 export class FieldOptions<T> {
     color?: string
