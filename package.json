@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "packagr": "ng-packagr -p ng-package.json",
-    "publish": "npm run packagr && npm publish dist"
+    "publish": "npm run packagr && npm run publish dist"
   },
   "private": false,
   "dependencies": {
