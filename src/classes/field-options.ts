@@ -1,4 +1,15 @@
 import { EasyFieldValidator } from '../services/validation.service'
+import { SelectOption } from '../classes/select-option'
+import { Observable } from 'rxjs/Observable'
+
+export class SelectKeyValueOptions<T>
+{
+    isAsync?: boolean;
+    itemsAsync?: Observable<any>;
+    items?: Array<SelectOption<T>>;
+    label?: string;
+    controlType?: string;
+}
 
 export class FieldOptions<T> {
     color?: string

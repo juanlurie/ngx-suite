@@ -13,7 +13,7 @@ import { PageEvent } from '@angular/material';
   
     <easy-select [key]="field.key" [easy-required]="field.validators" [readonly]="containerReadonly || field.readonly" *ngSwitchCase="'select'" [validators]="field.validators" [placeholder]="field.label" [selectedValue]="field.value" [items]="field.items" (fieldValueChange)="valueChanged($event)" [options]="field.pristine"></easy-select>
   
-    <easy-select-key-value [key]="field.key" [easy-required]="field.validators" [readonly]="containerReadonly || field.readonly" [validators]="field.validators" *ngSwitchCase="'select-key-value'" [placeholder]="field.label" [selectedValue]="field.value" [items]="field.items" (fieldValueChange)="valueChanged($event)" [options]="field.pristine"></easy-select-key-value>
+    <easy-select-key-value [key]="field.key" [easy-required]="field.validators" [readonly]="containerReadonly || field.readonly" [validators]="field.validators" *ngSwitchCase="'select-key-value'" [placeholder]="field.label" [selectedValue]="field.value" [items]="field.items" [itemsAsync]="field.itemsAsync" (fieldValueChange)="valueChanged($event)" [options]="field.pristine" [isAsync]="field.isAsync"></easy-select-key-value>
   
     <easy-radio-button [key]="field.key" [easy-required]="field.validators" [readonly]="containerReadonly || field.readonly" [validators]="field.validators" *ngSwitchCase="'radio-button'" [placeholder]="field.label" [selectedValue]="field.value" [items]="field.items" (fieldValueChange)="valueChanged($event)" [options]="field.pristine"></easy-radio-button>
   

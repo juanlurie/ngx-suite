@@ -2,6 +2,8 @@ import { Component, Input, Output, EventEmitter, DoCheck, IterableDiffers } from
 import { SelectOption, FieldChangeDto } from '../classes/index'
 import { ValidatorService, EasyFieldValidator, ValidatorType, EasyFormComponent } from '../services/validation.service'
 import { FormControl, Validators } from '@angular/forms';
+import { IfObservable } from 'rxjs/observable/IfObservable';
+import { Observable } from 'rxjs/observable';
 
 @Component({
     selector: 'easy-select-key-value',
@@ -22,8 +24,10 @@ export class EasySelectKeyValueComponent extends EasyFormComponent {
     @Output() fieldValueChange = new EventEmitter<FieldChangeDto>();
     @Input('placeholder') placeholder: string;
     @Input('items') items: Array<SelectOption<any>>;
+    @Input('itemsAsync') itemsAsync: Observable<any>;
     @Input('selectedValue') selectedValue: any;
     @Input('key') key: string = '';
+    @Input('isAsync') isAsync: boolean = false;
 
     iterableDiffer: any;
 
@@ -51,6 +55,30 @@ export class EasySelectKeyValueComponent extends EasyFormComponent {
 
     ngOnInit() {
         super.ngOnInit();
+
+        if (this.isAsync) {
+            this.items = [];
+            this.formControl.disable();
+            if (this.isAsync) {
+
+                this.itemsAsync
+                    .map(x => {
+                        if (x.headers.get('Content-type').startsWith('application/json')) {
+                            return x.json();
+                        }
+                        else {
+                            return x;
+                        }
+                    })
+                    .subscribe((x: Array<any>) => {
+                        this.formControl.enable();
+                        x.forEach(element => {
+                            this.items.add(new SelectOption(element.id, element.name));
+                        });
+                    });
+            }
+
+        }
 
         if (this.selectedValue != null && this.selectedValue != "")
             this.onChange();

@@ -7,6 +7,7 @@ import { MultipleFieldsWithSameKeyExistException } from '../classes/exceptions'
 import { EasyCardField } from '../factories/easy-card-factory';
 import { EasyForm } from '../baseClasses/easy-form';
 import { EasyField } from '../baseClasses/easy-field';
+import { Observable } from 'rxjs/Observable';
 
 import { EasyTabField, EasyExpansionPanelField, EasyAccordionField } from '../factories/easy-card-factory';
 
@@ -18,7 +19,8 @@ import {
     KeyValue,
     TableFieldOptions,
     FieldOptions,
-    SelectOption
+    SelectOption,
+    SelectKeyValueOptions
 } from '../classes/index'
 
 import { EasyTableField } from '../factories/easy-table-field-factory';
@@ -40,6 +42,7 @@ import {
     EasySelectField,
     EasyDatePickerField
 } from '../factories/index';
+import { IfObservable } from 'rxjs/observable/IfObservable';
 
 export class EasyContainer extends ContainerValidation {
     form: EasyForm;
@@ -248,7 +251,17 @@ export class EasyContainer extends ContainerValidation {
         return field;
     }
 
-    addSelectKeyValueField<T>(label: string, items: Array<SelectOption<T>>, options: FieldOptions<T> = {}): EasySelectKeyValueField<T> {
+    addSelectKeyValueFieldAsync<T>(label: string, items: Observable<Array<SelectOption<T>>>, options: SelectKeyValueOptions<T> = {}): EasySelectKeyValueField<T> {
+        options.isAsync = true;
+        options.itemsAsync = items;
+        options.label = label
+        let field: any = new EasySelectKeyValueField(options);
+        this.addField(field);
+
+        return field;
+    }
+
+    addSelectKeyValueField<T>(label: string, items: Array<SelectOption<T>>, options: SelectKeyValueOptions<T> = {}): EasySelectKeyValueField<T> {
         options.items = items;
         options.label = label
         let field: any = new EasySelectKeyValueField(options);
