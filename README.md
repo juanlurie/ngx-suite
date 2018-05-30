@@ -1,14 +1,14 @@
-# Easy-Suite for Material Design for Angular (and later ionic)
+# ngx-Suite for Material Design for Angular (and later ionic)
 
-This is the home for Easy-Suite. Built for Angular using Material Design. 
+This is the home for ngx-Suite. Built for Angular using Material Design. 
 
 Component abstraction to allow easy dynamic pages. Build pages from component or in HTML.
 
 ### Installation
 
-The latest release of Easy-Suite can be installed from npm
+The latest release of ngx-Suite can be installed from npm
 
-`npm install --save easy-suite`
+`npm install --save ngx-suite`
 
 ### Project status
 Easy Suite is currently in beta and under active development.
@@ -40,7 +40,7 @@ be missing some behaviors or polish.
 ## Step 1: Install Easy Suite
 
 ```bash
-npm install --save easy-suite
+npm install --save ngx-suite
 ```
 
 ## Step 2: Import the component modules
@@ -48,7 +48,7 @@ npm install --save easy-suite
 Import the NgModule: 
 
 ```ts
-import {EasyModule} from 'easy-suite';
+import {EasyModule} from 'ngx-suite';
 
 @NgModule({
   ...
@@ -62,11 +62,11 @@ import {EasyModule} from 'easy-suite';
 ```ts
 
 import { Component} from '@angular/core';
-import { EasyForm, EasyFormService, EasyField, EasyNotification, Colors, ButtonTypes } from 'easy-suite';
+import { EasyForm, EasyFormService, EasyField, EasyNotification, Colors, ButtonTypes } from 'ngx-suite';
 
 @Component({
   selector: 'hello-world',
-  template: '<easy-form [form]="form"></easy-form>'
+  template: '<ngx-form [form]="form"></ngx-form>'
 })
 
 export class HelloWorldComponent {
@@ -202,7 +202,7 @@ Icons, InputTypes, ButtonTypes, Colors, DateFormats
 
 Usage : 
 
-import { ButtonTypes, Icons, Colors, InputTypes } from 'easy-suite';
+import { ButtonTypes, Icons, Colors, InputTypes } from 'ngx-suite';
 
 tab.addInputField('Test Input', { type: InputTypes.input_type_password });
 
@@ -266,7 +266,7 @@ The Form object exposes a fields array. As fields are upated this KeyValue Array
 Import EasyValidator
 
 ```ts
-import { EasyValidator } from 'easy-suite';
+import { EasyValidator } from 'ngx-suite';
 ```
 
 Add validators to field
@@ -305,7 +305,7 @@ This will return a valid flag and an array of invalid fields. Invalid fields wil
 ## Step 7 (Optional): Usage as component directives.
 
 ```ts
-  <easy-checkbox [placeholder]="field.label" [(value)]="field.value"></easy-checkbox>
+  <ngx-checkbox [placeholder]="field.label" [(value)]="field.value"></easy-checkbox>
 
   <easy-input [placeholder]="field.label" [(value)]="field.value" (change)="valueChanged()"></easy-input>
 
@@ -355,7 +355,7 @@ export class EasyInputComponent {
 ```
 
 ### Step two
-Map the component so that easy-suite knows which component to render when the field is requested from the fluent api.
+Map the component so that ngx-suite knows which component to render when the field is requested from the fluent api.
 
 Under the directives folder open the easy-form-field.component.ts file. This is just a switch.
 
@@ -440,7 +440,7 @@ EasyDividerComponent
 
 ## Appendix: Configuring SystemJS
 
-If your project is using SystemJS for module loading, you will need to add `easy-suite`
+If your project is using SystemJS for module loading, you will need to add `ngx-suite`
 to the SystemJS configuration:
 
 ```js
@@ -448,7 +448,7 @@ System.config({
   // existing configuration options
   map: {
     // ...
-    'easy-suite': 'npm:easy-suite/src/',
+    'ngx-suite': 'npm:ngx-suite/src/',
     'easy-core': 'npm:easy-core/src/'
     // ...
   },
@@ -459,7 +459,7 @@ System.config({
         main: 'index.js',
         defaultExtension: 'js'
       },
-      'easy-suite': {
+      'ngx-suite': {
         main: 'index.js',
         defaultExtension: 'js'
       }
