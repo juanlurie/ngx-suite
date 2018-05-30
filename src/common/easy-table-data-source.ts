@@ -1,7 +1,7 @@
 import { DataSource } from '@angular/cdk/table';
-import { Observable } from 'rxjs/Observable';
+import { Observable, BehaviorSubject, merge } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { MatSort, Sort, MatPaginator } from '@angular/material';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 export class TableDatabase {
     dataChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
@@ -46,7 +46,7 @@ export class TableDataSource extends DataSource<any> {
         if (this.paginator != null)
             this.setPaginator(this.paginator);
 
-        return Observable.merge(...this.displayDataChanges).map(() => {
+        return merge(...this.displayDataChanges).pipe(map(() => {
 
             let data = this.database.data;
 
@@ -69,7 +69,7 @@ export class TableDataSource extends DataSource<any> {
             this.renderedData = this.getSortedData(data);
 
             return this.renderedData;
-        });
+        }));
     }
 
     disconnect() { }

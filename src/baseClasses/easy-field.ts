@@ -1,6 +1,6 @@
 import { FieldOptions, FieldChangeDto } from '../classes/index';
 import { EasyFieldValidator, EasyValidator, ValidatorType } from '../services/validation.service'
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs';
 
 export class EasyField {
   controlType: string;

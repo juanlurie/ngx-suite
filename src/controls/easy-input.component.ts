@@ -5,7 +5,7 @@ import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'easy-input',
-  template: `<mat-input-container class='easy-input'>
+  template: `<mat-form-field class='easy-input'>
                         <input matInput [id]="key" [easy-max-length]="maxLength" [type]="type" [placeholder]="placeholder"  [(ngModel)]="value" (change)="onChange()" (keyup.enter)="enterKeyPressed()" [formControl]="formControl">
                         <mat-hint *ngIf="maxLength != null && maxLength > 0" align="end">{{value.length}} / {{maxLength}}</mat-hint>
                         <mat-hint *ngIf="hint != null && hint.length > 0" align="start">{{hint}}</mat-hint>
@@ -13,7 +13,7 @@ import { FormControl, Validators } from '@angular/forms';
                         <mat-error *ngIf="formControl.hasError('maxlength')">{{this.getError('maxlength')}}</mat-error>
                         <mat-error *ngIf="formControl.hasError('minlength')">{{this.getError('minlength')}}</mat-error>
                         <mat-error *ngIf="formControl.hasError('pattern')">{{this.getError('pattern')}}</mat-error>
-               </mat-input-container>`,
+               </mat-form-field>`,
   styles: [`.easy-input {
                 margin-top: 20px;
                 width: 100%;

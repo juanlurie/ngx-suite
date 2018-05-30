@@ -2,8 +2,8 @@ import { Component, Input, Output, EventEmitter, DoCheck, IterableDiffers } from
 import { SelectOption, FieldChangeDto } from '../classes/index'
 import { ValidatorService, EasyFieldValidator, ValidatorType, EasyFormComponent } from '../services/validation.service'
 import { FormControl, Validators } from '@angular/forms';
-import { IfObservable } from 'rxjs/observable/IfObservable';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'easy-select-key-value',
@@ -62,14 +62,14 @@ export class EasySelectKeyValueComponent extends EasyFormComponent {
             if (this.isAsync) {
 
                 this.itemsAsync
-                    .map(x => {
+                    .pipe(map((x: any) => {
                         if (x.headers.get('Content-type').startsWith('application/json')) {
                             return x.json();
                         }
                         else {
                             return x;
                         }
-                    })
+                    }))
                     .subscribe((x: Array<any>) => {
                         this.formControl.enable();
                         x.forEach(element => {

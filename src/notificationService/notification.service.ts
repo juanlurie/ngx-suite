@@ -12,7 +12,7 @@ export class EasyNotification {
     public showError(title: string, body: string, action: Function = null) {
         let config = new MatSnackBarConfig();
         config.duration = 6000;
-        config.extraClasses = ['notification-error'];
+        //config.extraClasses = ['notification-error'];
         this.snackBar.open(title, body, config);
         
         let ref = this.snackBar.open(title, body, config);

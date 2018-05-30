@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { EasyModalDialog } from '../index';
 import { EasyField } from '../baseClasses/easy-field';
 import { EasyContainer } from '../baseClasses/easy-container'
-import { retry } from 'rxjs/operator/retry';
+import { retry } from 'rxjs/operators';
 
 @Injectable()
 export class EasyModalService {

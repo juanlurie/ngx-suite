@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { MatDialog } from '@angular/material';
 import { EasyNotification } from '../notificationService/notification.service'
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { EasyModalService } from '../services/easy-modal.service'
 import { ButtonTypes, Icons, Colors } from '../classes/index'
 import { EasyForm } from '../baseClasses/easy-form';

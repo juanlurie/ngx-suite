@@ -1,0 +1,9 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ngx-suite": {
+      "description": "A blank schematic.",
+      "factory": "./ngx-suite/index#ngxSuite"
+    }
+  }
+}

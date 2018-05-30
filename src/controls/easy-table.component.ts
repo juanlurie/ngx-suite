@@ -3,14 +3,8 @@ import { FieldChangeDto, ColumnTypes } from '../classes/index';
 import { EasyButtonField, EasyInputField } from '../factories/index';
 import { EasyField } from '../baseClasses/easy-field';
 import { DataSource } from '@angular/cdk/table';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/observable/fromEvent';
+import { fromEvent, Observable, BehaviorSubject } from 'rxjs';
+import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 import { MatSort, Sort, MatSortable, MatPaginator, PageEvent } from '@angular/material';
 import { TableDataSource, TableDatabase } from '../common/easy-table-data-source'
 
@@ -69,7 +63,7 @@ export class Sortable implements MatSortable {
         [pageSizeOptions]="[5, 10, 25, 100]" [style.visibility]="rows.length > 0" (page)="onPageChange($event)">
       </mat-paginator>
   </div>`,
-//<easy-form-field *ngSwitchCase="'control'" fxFlex="auto" [field]="getField(column,row)" (fieldValueChange)="valueChanged($event)"></easy-form-field>
+  //<easy-form-field *ngSwitchCase="'control'" fxFlex="auto" [field]="getField(column,row)" (fieldValueChange)="valueChanged($event)"></easy-form-field>
   styles: [`
   .table-container {
     display: flex;
@@ -213,9 +207,10 @@ export class EasyTableComponent implements OnInit, DoCheck {
 
   initializeFilter() {
     if (this.filter != null)
-      Observable.fromEvent(this.filter.nativeElement, 'keyup')
-        .debounceTime(150)
-        .distinctUntilChanged()
+      fromEvent(this.filter.nativeElement, 'keyup')
+        .pipe(
+          debounceTime(150),
+          distinctUntilChanged())
         .subscribe(() => {
           if (!this.dataSource) { return; }
           this.dataSource.filter = this.filter.nativeElement.value;

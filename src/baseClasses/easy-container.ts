@@ -1,5 +1,5 @@
 import { OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidatorType, ContainerValidation } from '../services/validation.service';
@@ -7,7 +7,6 @@ import { MultipleFieldsWithSameKeyExistException } from '../classes/exceptions'
 import { EasyCardField } from '../factories/easy-card-factory';
 import { EasyForm } from '../baseClasses/easy-form';
 import { EasyField } from '../baseClasses/easy-field';
-import { Observable } from 'rxjs/Observable';
 
 import { EasyTabField, EasyExpansionPanelField, EasyAccordionField } from '../factories/easy-card-factory';
 
@@ -42,7 +41,6 @@ import {
     EasySelectField,
     EasyDatePickerField
 } from '../factories/index';
-import { IfObservable } from 'rxjs/observable/IfObservable';
 
 export class EasyContainer extends ContainerValidation {
     form: EasyForm;

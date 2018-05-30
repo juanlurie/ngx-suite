@@ -2,9 +2,8 @@ import { Component, Input, Output, OnInit, OnChanges, EventEmitter } from '@angu
 import { ValidatorService, EasyFieldValidator, EasyFormComponent } from '../services/validation.service'
 import { FormControl } from '@angular/forms';
 import { SelectOption, FieldChangeDto } from '../classes/index';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'easy-autocomplete',
@@ -32,8 +31,8 @@ export class EasyAutocompleteComponent extends EasyFormComponent {
 
   constructor(validatorService: ValidatorService) {
     super(validatorService);
-    this.filteredItems = this.formControl.valueChanges.startWith(null)
-      .map(x => x ? this.filter(x) : this.items.slice());
+    this.filteredItems = this.formControl.valueChanges.pipe(startWith(null)
+      , map(x => x ? this.filter(x) : this.items.slice()));
   }
 
   onChange(item: SelectOption<any>) {

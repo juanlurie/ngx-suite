@@ -1,7 +1,7 @@
 import { SelectKeyValueOptions, SelectOption } from '../classes/index';
 import { EasyField } from '../baseClasses/easy-field';
 import { ObservableMedia } from '@angular/flex-layout';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export class EasySelectKeyValueField<T> extends EasyField {
   controlType = 'select-key-value';

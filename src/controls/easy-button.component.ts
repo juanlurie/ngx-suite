@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, Observable } from 'rxjs/Rx';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
     selector: 'easy-button',

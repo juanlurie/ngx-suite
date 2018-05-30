@@ -1,4 +1,4 @@
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs';
 import { PageEvent } from '@angular/material';
 
 import { EasyAutocompleteKeyValueField, EasyAutocompleteField, EasyInputField, EasyCheckboxField, EasyButtonField, EasyDatePickerField, EasySelectField, EasySelectKeyValueField, EasyRadioButtonField, EasyFileUploadField } from '../factories/index';

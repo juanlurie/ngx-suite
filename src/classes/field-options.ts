@@ -1,6 +1,6 @@
 import { EasyFieldValidator } from '../services/validation.service'
 import { SelectOption } from '../classes/select-option'
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs'
 
 export class SelectKeyValueOptions<T>
 {

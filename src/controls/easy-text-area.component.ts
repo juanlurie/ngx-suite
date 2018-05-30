@@ -6,14 +6,14 @@ import { EasyField } from '../baseClasses/easy-field';
 
 @Component({
   selector: 'easy-text-area',
-  template: `<mat-input-container class='easy-input'>
+  template: `<mat-form-field class='easy-input'>
                         <textarea matInput [id]="key" [style.height]="height" [style.min-height]="minHeight" [style.max-height]="maxHeight" [easy-max-length]="maxLength" [placeholder]="placeholder"  [(ngModel)]="value" (change)="onBlur()" [formControl]="formControl"></textarea>
                         <mat-hint *ngIf="maxLength != null && maxLength > 0" align="end">{{value.length}} / {{maxLength}}</mat-hint>
                         <mat-error *ngIf="formControl.hasError('required')">{{this.getError('required')}}</mat-error>
                         <mat-error *ngIf="formControl.hasError('maxlength')">{{this.getError('maxlength')}}</mat-error>
                         <mat-error *ngIf="formControl.hasError('minlength')">{{this.getError('minlength')}}</mat-error>
                         <mat-error *ngIf="formControl.hasError('pattern')">{{this.getError('pattern')}}</mat-error>
-               </mat-input-container>`,
+               </mat-form-field>`,
   styles: [`.easy-input {
                 margin-top: 20px;
                 width: 100%;

@@ -1,5 +1,5 @@
 import { OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs';
 import { FieldWithKeyDoesNotExistException, FieldWithSameKeyAlreadyExistsException, MultipleFieldsWithSameKeyExistException } from '../classes/exceptions';
 import { EasyButtonField } from '../factories/index'
 
