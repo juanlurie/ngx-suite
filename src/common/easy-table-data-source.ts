@@ -12,7 +12,7 @@ export class TableDatabase {
     }
 }
 
-export class TableDataSource extends DataSource<any> {
+export class TableDataSource extends DataSource<Array<any>> {
 
     filterChange = new BehaviorSubject('');
     get filter(): string { return this.filterChange.value; }
