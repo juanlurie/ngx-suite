@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Http, ResponseContentType } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { ResponseContentType } from '@angular/http';
 import { EasyNotification } from '../notificationService/notification.service';
 import { FileDownloadService } from '../services/file-download-service';
 
@@ -46,7 +47,7 @@ export class EasyRecordComponent implements OnInit {
     page: number = 1;
     isLoadComplete: boolean = false;
 
-    constructor(private easyNotification: EasyNotification, private fileDownloader: FileDownloadService, private http: Http) {
+    constructor(private easyNotification: EasyNotification, private fileDownloader: FileDownloadService, private http: HttpClient) {
 
     }
 
@@ -91,7 +92,7 @@ export class EasyRecordComponent implements OnInit {
 
     download() {
 
-        this.http.get(this.source, { responseType: ResponseContentType.ArrayBuffer })
+        this.http.get(this.source, { responseType: 'arraybuffer' })
             .subscribe((file: any) => {
                 let bytes = new Uint8Array(file._body);
                 this.fileDownloader.downloadFileFromBytes(bytes, this.getFilename(file));

@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http, ResponseContentType } from '@angular/http';
+import { ResponseContentType } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { EasyNotification } from '../notificationService/notification.service'
 import { saveAs } from 'file-saver';
 
 @Injectable()
 export class FileDownloadService {
-    constructor(private http: Http, private easyNotification: EasyNotification) {
+    constructor(private http: HttpClient, private easyNotification: EasyNotification) {
 
     }
 
     public downloadFile(url: string, overriddenFilename?: string) {
-        this.http.get(url, { responseType: ResponseContentType.Blob }).subscribe(x => {
+        this.http.get(url, { responseType: 'blob' }).subscribe(x => {
             this.saveToFileSystem(x, overriddenFilename);
         })
     }

@@ -40,10 +40,11 @@ import { FileUploadOptions } from '../classes/file-upload-options';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { EasyDateTimePickerComponent } from '../controls/easy-date-time-picker.component';
 import { EasyDividerComponent } from '../controls/easy-divider.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     entryComponents: [EasyModalDialog],
-    imports: [ReactiveFormsModule, PdfViewerModule, EasyMaterialModule, CommonModule, FormsModule, FlexLayoutModule, FileUploadModule],
+    imports: [ReactiveFormsModule, PdfViewerModule, EasyMaterialModule, CommonModule, FormsModule, FlexLayoutModule, FileUploadModule, HttpClientModule],
     declarations: [
         EasyDatePickerComponent,
         EasyButtonComponent,

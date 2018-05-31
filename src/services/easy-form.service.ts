@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { EasyNotification } from '../notificationService/notification.service'
 import { Subscription } from 'rxjs';
@@ -18,7 +18,7 @@ export class EasyFormService implements OnDestroy {
   private modal: EasyContainer;
   private stackTraceField: EasyField;
 
-  constructor(private easyNotification: EasyNotification, private http: Http, matDialog: MatDialog) {
+  constructor(private easyNotification: EasyNotification, private http: HttpClient, matDialog: MatDialog) {
 
     this.easyModal = new EasyModalService(matDialog);
   }

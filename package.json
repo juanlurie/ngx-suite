@@ -1,6 +1,6 @@
 {
   "name": "ngx-suite",
-  "version": "0.0.18",
+  "version": "0.0.28",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -13,9 +13,7 @@
     "publish": "npm run packagr && npm publish dist"
   },
   "private": false,
-  "dependencies": {   
-    
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/file-saver": "^1.3.0",
     "canonical-path": "0.0.2",

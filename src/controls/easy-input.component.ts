@@ -6,7 +6,7 @@ import { FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'easy-input',
   template: `<mat-form-field class='easy-input'>
-                        <input matInput [id]="key" [easy-max-length]="maxLength" [type]="type" [placeholder]="placeholder"  [(ngModel)]="value" (change)="onChange()" (keyup.enter)="enterKeyPressed()" [formControl]="formControl">
+                        <input matInput [id]="key" [easy-max-length]="maxLength" [type]="type" [placeholder]="placeholder" (keyup.enter)="enterKeyPressed()" [formControl]="formControl">
                         <mat-hint *ngIf="maxLength != null && maxLength > 0" align="end">{{value.length}} / {{maxLength}}</mat-hint>
                         <mat-hint *ngIf="hint != null && hint.length > 0" align="start">{{hint}}</mat-hint>
                         <mat-error *ngIf="formControl.hasError('required')">{{this.getError('required')}}</mat-error>
@@ -33,8 +33,17 @@ export class EasyInputComponent extends EasyFormComponent {
     super(validatorService);
   }
 
-  onChange() {
-    this.fieldValueChange.emit(new FieldChangeDto(this.key, this.value, this.formControl.valid));
+  ngOnInit() {
+    this.formControl.setValue(this.value);
+    this.formControl.valueChanges.subscribe(x => this.onChange(x));
+  }
+
+  onChange(value: any) {
+    if (this.value == value)
+      return;
+
+    this.value = value;
+    this.fieldValueChange.emit(new FieldChangeDto(this.key, value, this.formControl.valid));
   }
 
   enterKeyPressed() {
